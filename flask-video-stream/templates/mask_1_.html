@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>flask-bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+          html {
+            transform: scale(.75);
+            -webkit-transform: scale(.75);
+            -moz-transform: scale(.75);
+            -ms-transform: scale(.75);
+            -o-transform: scale(.75);
+            //width: 100%;
+            //height: 100%;
+            //margin: -25% -25%;
+            margin-top: -7%;
+           }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+    <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Live Face Filter</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{{ url_for('mask_1') }}">Mask 1</a></li>
+              <li><a href="#">Mask 2</a></li>
+              <li><a href="#">Mask 3</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select mask<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Mask 1</a></li>
+                  <li><a href="#">Mask 2</a></li>
+                  <li><a href="#">Mask 3</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://onix-systems.com/">Onix-Systems</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="page-header">
+        <h1>Live Face Filter</h1>
+        <h4>The application applies a mask to the video stream coming from the webcam. The mask is presented as a PNG file with the corresponding markup in the CSV file. Facial features are tracked using a neural network model.</h4>
+      </div>
+
+      <div class="col-md-12 text-center">
+         <img src="{{ url_for('video_feed', mask_path='masks/onix_01.png') }}">
+      </div>
+
+      </div>
+    <!--<script src="script.js"></script>-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>

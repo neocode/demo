@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Live Face Filter</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('mask_1') }}">Mask 1</a></li>
+              <li><a href="{{ url_for('mask_2') }}">Mask 2</a></li>
+              <li><a href="{{ url_for('mask_3') }}">Mask 3</a></li>
+              <li class="active"><a href="{{ url_for('mask_4') }}">Mask 4</a></li>
+              <li><a href="{{ url_for('video_feed', mask_path='masks/onix_04.png') }}">Fullscreen</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://onix-systems.com/">Onix-Systems</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="page-header">
+        <h1>Live Face Filter</h1>
+        <h4>The application applies a mask to the video stream coming from the webcam. The mask is presented as a PNG file with the corresponding markup in the CSV file. Facial features are tracked using a neural network model.</h4>
+      </div>
+
+      <div class="col-md-12 text-center">
+         <img src="{{ url_for('video_feed', mask_path='masks/onix_04.png') }}" alt="Camera" class="img-thumbnail">
+      </div>
+</div>
+{% endblock %}

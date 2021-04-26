@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <!-- Starts image section -->
+    <div class="row justify-content-md-center mb-4">
+        <h2 class='text-primary'>Historical Prediction of Bitcoin-USD (BTC-USD) Price </h2>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="thumbnail">
+            <div id="loading"></div>
+            <img src="{{ img_png }}" id="myimg" width="900px" height="405px" class="img-thumbnail" />
+        </div>
+    </div>
+    <!-- Ends image section -->
+
+    <!-- Starts form section -->
+    <form class="form-inline justify-content-center" action="{{ url_for('predict') }}" method="post">
+        <!-- <div class="form-group mb-2" style="visibility:{{ visib }}"> -->
+        <div class="form-row">
+            <div class="col {{ visib1 }}">
+                <label for="datepicker1" class="col-form-label">Start:</label>
+            </div>
+            <div class="col {{ visib1 }}">
+                <input type="date" name="start_date" min="2020-03-01" max="2020-12-01" class="form-control" id="datepicker1" >
+            </div>
+            <div class="col {{ visib1 }}">
+                <label for="datepicker2" class="col-form-label">End:</label>
+            </div>
+            <div class="col {{ visib1 }}">
+                <input type="date" name="end_date" min="2020-04-01" max="2021-01-01" class="form-control" id="datepicker2" >
+            </div>
+            <div class="col {{ visib1 }}">
+                <button type="submit" class="btn btn-primary" onclick="loading();">Predict with LSTM Model</button>
+            </div>
+            <div class="col {{ visib2 }}">
+                <a href="/" class="btn btn-primary" role="button" aria-disabled="true" onclick="loading();">Show Original Dependency</a>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row justify-content-md-center">
+        <div class="card" style="width: 57rem;">
+            <img class="card-img-top" src="{{ url_for('static', filename='bitcoin.jpg') }}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text text-justify">
+                    We used <a href="https://www.kaggle.com/mczielinski/bitcoin-historical-data" class="card-link">CSV files</a>
+                    for select bitcoin exchanges for the time period of Jan 2012 to December March 2021,
+                    with minute to minute updates of OHLC (Open, High, Low, Close), Volume in BTC and indicated currency, and weighted
+                    bitcoin price. Timestamps are in Unix time. Timestamps without any trades or activity have their data fields filled
+                    with NaNs. If a timestamp is missing, or if there are jumps, this may be because the exchange (or its API) was down,
+                    the exchange (or its API) did not exist, or some other unforeseen technical error in data reporting or gathering.
+                </p>
+            </div>
+        </div>
+     </div>
+
+    <script type="text/javascript">
+        function loading(){
+            $("#loading").show();
+        }
+    </script>
+   <!-- Ends form section -->
+
+{% endblock %}
